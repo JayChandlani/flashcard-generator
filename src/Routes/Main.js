@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { localCard } from '../redux/actions/setCard'
-import Corousel from '../components/Corousel'
+import FlashCardCorousel from '../components/FlashCardCorousel'
 import CreateFlashCard from '../CreateFlashCard/CreateFlashCard'
 import MyFlashCard from '../MyFlashCard/MyFlashCard'
 import FlashCardDetail from '../FlashCardDetails/FleshCardDetails'
@@ -24,7 +24,7 @@ const Main = () => {
             <Route path={'/'} element={< CreateFlashCard/>} />
             <Route path={'/card'} element={<MyFlashCard />} />
             <Route path='/card/:id' element={<FlashCardDetail />}>
-                <Route path={':index'} element={<Corousel />}></Route>
+                <Route path={':index'} element={<FlashCardCorousel />}></Route>
             </Route>
         </Routes>
     )

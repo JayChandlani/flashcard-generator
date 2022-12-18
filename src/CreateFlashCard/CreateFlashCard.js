@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { Form, Field, Formik, FieldArray, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux'
 import { FaTrash, FaEdit, FaRegFileImage, FaBackspace, FaRegTimesCircle } from 'react-icons/fa';
-import * as Yup from 'yup';
+import {string,object,array} from 'yup';
 import { addCard } from '../redux/actions';
 const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/png'];
 
@@ -38,21 +38,20 @@ const CreateFlashCard = () => {
                 }}
                 // using yup for validation 
                 validationSchema={
-                    Yup.object({
-                        group: Yup.string()
+                    object({
+                        group: string()
                             .max(15, 'Must be 15 character or less')
                             .required('Required'),
 
-
-                        description: Yup.string()
+                        description: string()
                             .max(150, 'Must be 100 characters or less')
                             .required('Required'),
 
-                        card: Yup.array(Yup.object({
-                            term: Yup.string()
+                        card: array(object({
+                            term: string()
                                 .max(15, 'Must be 15 character or less')
                                 .required('Required'),
-                            defination: Yup.string()
+                            defination: string()
                                 .max(150, 'Must be 100 characters or less')
                                 .required('Required'),
                         }))
@@ -75,7 +74,7 @@ const CreateFlashCard = () => {
                                 {values.groupicon ?
                                     <div className="flex items-center space-x-3  my-5">
                                         <div className='w-full min-w-[100px] min-h-[100px] bg-gray-200 max-w-[100px] max-h-[100px]  overflow-hidden  flex rounded-full shadow-md hover:ring-2 hover:-translate-y-1 transition-all ease-in-out duration-300 hover:ring-slate-500 hover:shadow-2xl'>
-                                            <img src={values.groupicon} alt="" />
+                                            <img className='object-cover' src={values.groupicon} alt="" />
                                         </div>
                                         {/* editing the selected groupicon image  */}
                                         <label htmlFor="groupicon" >
@@ -186,7 +185,10 @@ const CreateFlashCard = () => {
                                             {cardItem.image
                                                 ? <div className="md:flex  space-x-4 space-y-4 my-5">
                                                     <div className='w-full relative  min-w-[150px] min-h-[150px]  max-w-[200px] max-h-[150px] p-4 overflow-hidden  flex'>
-                                                        <FaRegTimesCircle className='absolute top-0 right-0' onClick={() => setFieldValue(`card.${index}.image`, "")} color='#7F8487' size={"1.2rem"} />
+                                                        <FaRegTimesCircle className='absolute top-0 right-0'
+                                                            onClick={() => setFieldValue(`card.${index}.image`, "")}
+                                                            color='#7F8487'
+                                                            size={"1.2rem"} />
                                                         <label htmlFor={cardItem.id} >
                                                             <img src={cardItem.image} alt="" />
                                                         </label>
@@ -209,7 +211,6 @@ const CreateFlashCard = () => {
                                                     } else if (event.target.files[0].size <= 1024 * 1024) {
                                                         reader.readAsDataURL(event.target.files[0]);
                                                         reader.onload = () => {
-                                                            setFieldValue("groupicon", reader.result)
                                                             setFieldValue(`card.${index}.image`, reader.result)
                                                         }
                                                     }
@@ -218,12 +219,16 @@ const CreateFlashCard = () => {
                                             />
                                             <div className="absolute space-y-6  bottom-2 md:bottom-8 right-0"  >
                                                 {/* remove a field from the list*/}
-                                                <FaBackspace onClick={() => index > 0 ? arrayHelpers.remove(index) : ""} color='#E94560' className='transition-all  ease-in-out  hover:-mb-1 hover:-translate-y-px' size={"1.5rem"} />
+                                                <FaBackspace className='transition-all  ease-in-out  hover:-mb-1 hover:-translate-y-px'
+                                                    onClick={() => index > 0 ? arrayHelpers.remove(index) : ""}
+                                                    color='#E94560'
+                                                    size={"1.5rem"} />
                                                 {/* focus on a field from the list*/}
-
-                                                <FaEdit className='transition-all  ease-in-out  hover:translate-y-1 ' onClick={() => { inputRefs.current[index].focus() }} size={"1.5rem"} color='#6D67E4' />
+                                                <FaEdit className='transition-all  ease-in-out  hover:translate-y-1 '
+                                                    onClick={() => { inputRefs.current[index].focus() }}
+                                                    size={"1.5rem"}
+                                                    color='#6D67E4' />
                                             </div>
-
                                             <hr className=' border-gray-300 w-full  my-5' />
                                         </div>
                                         ))

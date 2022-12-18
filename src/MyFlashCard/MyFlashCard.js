@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import FlashCard from '../components/FlashCard'
+import FlashCardGroup from '../components/FlashCardGroup'
 import cards from '../images/cards.svg'
 
 const MyFlashCard = () => {
@@ -14,7 +14,7 @@ const MyFlashCard = () => {
                 {data.length ? data.map((items, index) => {
 
                     return (
-                        <FlashCard key={Math.random()} items={items} index={index} />
+                        <FlashCardGroup key={Math.random()} items={items} index={index} />
                     )
                 }) : ""}
             </div>

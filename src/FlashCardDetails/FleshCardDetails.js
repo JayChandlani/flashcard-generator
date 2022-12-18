@@ -4,7 +4,7 @@ import { FaLongArrowAltLeft } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { addGroupId } from '../redux/actions'
-
+import Button from '../components/Button';
 const FlashCardDetail = () => {
 
     const navigation = useNavigate()
@@ -20,7 +20,6 @@ const FlashCardDetail = () => {
 
     //function for navigating to next card
     const handleCorousel = (val) => {
-
         if (val === 'inc' && cardId < cardData[groupId].card.length - 1) {
             navigation(`/card/${groupId}/${cardId + 1}`)
         }
@@ -28,7 +27,6 @@ const FlashCardDetail = () => {
         else if (cardId > 0 && val === 'dec') {
             navigation(`/card/${groupId}/${cardId - 1}`)
         }
-
     }
     return (
         <>
@@ -69,8 +67,8 @@ const FlashCardDetail = () => {
 
                             {/* defined outlet component for using corousel component  */}
                             <Outlet />
-
-                            <div className='flex text-slate-700 cursor-pointer justify-center my-8 space-x-5'>
+                            <p className='mx-auto border h-3 w-60 bg-black opacity-5 mt-3 rounded-[100%] shadow-xl'></p>
+                            <div className='flex text-slate-700 cursor-pointer justify-center my-5 space-x-5'>
 
                                 {/* onClick function for navigating cards */}
                                 <FaChevronLeft size={'1.5rem'} onClick={() => handleCorousel('dec')} />
@@ -78,13 +76,7 @@ const FlashCardDetail = () => {
                                 <FaChevronRight size={'1.5rem'} onClick={() => handleCorousel('inc')} />
                             </div>
                         </div>
-                        <div className='md:absolute xl:relative md:left-10 md:bottom-0  grid justify-center items-center'>
-                            <div className=' flex flex-col space-y-4 font-semibold '>
-                                <button className='hover:bg-red-500 rounded-md border-red-500 border-2 px-6 py-1 hover:text-white  hover:-translate-y-1 transition-all ease-in-out duration-150 focus:ring-4 shadow-md focus:ring-red-400 '>Share</button>
-                                <button className='hover:bg-red-500 rounded-md border-red-500 border-2 px-6 py-1 hover:text-white  hover:-translate-y-1 transition-all ease-in-out duration-150 focus:ring-4 shadow-md focus:ring-red-400 '>Download</button>
-                                <button className='hover:bg-red-500 rounded-md border-red-500 border-2 px-6 py-1 hover:text-white  hover:-translate-y-1 transition-all ease-in-out duration-150 focus:ring-4 shadow-md focus:ring-red-400 '>Print</button>
-                            </div>
-                        </div>
+                        <Button groupId={groupId} cardData={cardData} cardId={cardId} />
                     </div>
                 </div> : ""}
         </>

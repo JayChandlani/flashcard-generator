@@ -15,6 +15,11 @@ body {
     left: 0;
     width: 100%;
 }
+.navbar .nav:hover::after{
+    left: 0;
+    width: 100%;
+}
+
 
 .navbar ::after {
     position: absolute;

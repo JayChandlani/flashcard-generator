@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import { FaTimes } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { removeCard } from '../redux/actions';
-
-const FlashCard = ({ items, index }) => {
+import mars from '../images/mars.jpg'
+const FlashCardGroup = ({ items, index }) => {
     const dispatch = useDispatch()
 
     // function to remove card from state
@@ -19,7 +19,7 @@ const FlashCard = ({ items, index }) => {
 
                 {items.groupicon
                     ? <img src={items.groupicon} alt='groupicon' className={'object-cover transition-all ease-in-out duration-500 hover:-translate-y-1 hover:rounded-md w-24 h-24 mb-3 rounded-full shadow-lg absolute -top-10'} />
-                    : <img className="transition-all ease-in-out duration-500 hover:-translate-y-1 hover:rounded-md w-24 h-24 mb-3 rounded-full shadow-lg absolute bg-blue-300 -top-10" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyEF8D8hKPhnYX3AIERI4ViHk5k7WNtyDwJw&usqp=CAU" alt="Bonnie" />}
+                    : <img className="transition-all object-cover ease-in-out duration-500 hover:-translate-y-1 hover:rounded-md w-24 h-24 mb-3 rounded-full shadow-lg absolute bg-blue-300 -top-10" src={mars} alt="groupicon" />}
 
                 <FaTimes className='absolute right-2 top-2 text-slate-300 text-lg hover:text-red-400'
 
@@ -44,4 +44,4 @@ const FlashCard = ({ items, index }) => {
     )
 }
 
-export default FlashCard
+export default FlashCardGroup
