@@ -4,14 +4,26 @@ import { FaTimes } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { removeCard } from '../redux/actions';
 import mars from '../images/mars.jpg'
+import { toast } from 'react-toastify';
 const FlashCardGroup = ({ items, index }) => {
     const dispatch = useDispatch()
 
     // function to remove card from state
     const handleDelete = (items) => {
         dispatch(removeCard(items))
+        notify();
     }
-
+    const notify = () => toast.success('Group has been removed', {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    });
+    
     return (
         <div className="mx-auto w-full mt-10 max-w-sm max-h-sm bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-xl transition-all ease-in-out duration-300 hover:-translate-y-1">
 

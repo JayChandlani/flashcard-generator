@@ -1,9 +1,12 @@
 import React, { useRef } from 'react'
 import { FaRegCopy, FaTimes } from "react-icons/fa";
-const Modal = ({ groupId, cardId, visible, handleClose }) => {
+const Modal = ({ groupId, cardId, visible, handleClose, notify }) => {
 
     const copyLink = useRef() // reference of the anchor tag
-
+    const handleCopy = () => {
+        navigator.clipboard.writeText(copyLink.current.href)
+        notify('Linked Copied to Clipboard')
+    }
     if (!visible) return null
     return (
         <div id="dismiss" onClick={(e) => handleClose(e)} className='fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center'>
@@ -18,7 +21,7 @@ const Modal = ({ groupId, cardId, visible, handleClose }) => {
                         <p className='text-gray-500'>Link:<a ref={copyLink} target='_blank' rel="noreferrer" href={`https://flashcard-generator-jay.netlify.app/card/${groupId}/${cardId}`} className='ml-1 text-blue-500'>{`https://flashcard-generator-jay.netlify.app/card/${groupId}/${cardId}`}</a></p>
                     </div>
                     <FaRegCopy
-                        onClick={() => navigator.clipboard.writeText(copyLink.current.href)}
+                        onClick={handleCopy}
                         className='text-gray-500 text-lg hover:text-blue-500 hover:translate-y-px transition-all ease-in-out' />
                 </div>
             </div>

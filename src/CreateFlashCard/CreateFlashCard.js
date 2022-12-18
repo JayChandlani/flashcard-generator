@@ -2,14 +2,40 @@ import React, { useRef } from 'react'
 import { Form, Field, Formik, FieldArray, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux'
 import { FaTrash, FaEdit, FaRegFileImage, FaBackspace, FaRegTimesCircle } from 'react-icons/fa';
-import {string,object,array} from 'yup';
+import { string, object, array } from 'yup';
 import { addCard } from '../redux/actions';
+import { toast } from 'react-toastify';
 const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/png'];
 
 const CreateFlashCard = () => {
 
     const dispatch = useDispatch();
     const reader = new FileReader(); //defining file reader for converting images
+
+    const notify = (val) => {
+        toast.success(val, {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        })
+    }
+    const errorNotify = (val) => {
+        toast.warn(val, {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        })
+    }
 
 
     const inputRefs = useRef([]);
@@ -60,6 +86,7 @@ const CreateFlashCard = () => {
                 onSubmit={(values, { resetForm, setSubmitting }) => {
                     setTimeout(() => {
                         resetForm();
+                        notify('Submitted');
                         dispatch(addCard(values)) //dispatching form data to redux state after form submit
                         setSubmitting(false);
                     }, 400);
@@ -115,10 +142,10 @@ const CreateFlashCard = () => {
                                     onChange={(event) => {
                                         if (event.target.files[0]
                                             && !SUPPORTED_FORMATS.includes(event.target.files[0].type)) {
-                                            alert('unsupported file format')
+                                            errorNotify('unsupported file format')
                                         }
                                         else if (event.target.files[0].size > 1024 * 1024) {
-                                            alert('image size is very large')
+                                            errorNotify('image size is very large')
                                         } else if (event.target.files[0].size <= 1024 * 1024) {
                                             reader.readAsDataURL(event.target.files[0]);
                                             reader.onload = () => {
@@ -204,10 +231,10 @@ const CreateFlashCard = () => {
                                                 onChange={(event) => {
                                                     if (event.target.files[0]
                                                         && !SUPPORTED_FORMATS.includes(event.target.files[0].type)) {
-                                                        alert('unsupported file format')
+                                                        errorNotify('unsupported file format')
                                                     }
                                                     else if (event.target.files[0].size > 1024 * 1024) {
-                                                        alert('image size is very large')
+                                                        errorNotify('image size is very large')
                                                     } else if (event.target.files[0].size <= 1024 * 1024) {
                                                         reader.readAsDataURL(event.target.files[0]);
                                                         reader.onload = () => {
