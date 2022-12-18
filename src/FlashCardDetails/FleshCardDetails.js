@@ -67,7 +67,8 @@ const FlashCardDetail = () => {
 
                             {/* defined outlet component for using corousel component  */}
                             <Outlet />
-                            <p className='mx-auto border h-3 w-60 bg-black opacity-5 mt-3 rounded-[100%] shadow-xl'></p>
+
+                            <p className='mx-auto  h-3 w-60 bg-black opacity-5 mt-3 rounded-[100%] shadow-xl'></p>
                             <div className='flex text-slate-700 cursor-pointer justify-center my-5 space-x-5'>
 
                                 {/* onClick function for navigating cards */}
@@ -76,7 +77,7 @@ const FlashCardDetail = () => {
                                 <FaChevronRight size={'1.5rem'} onClick={() => handleCorousel('inc')} />
                             </div>
                         </div>
-                        <Button groupId={groupId} cardData={cardData} cardId={cardId} />
+                        <Button groupId={groupId} cardData={cardData}  cardId={cardId}  />
                     </div>
                 </div> : ""}
         </>
