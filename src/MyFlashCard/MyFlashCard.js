@@ -23,7 +23,7 @@ const MyFlashCard = () => {
                 : <div className=' relative top-24'>
                     <h1 className='text-center text-xl font-bold text-slate-600  '>No Cards To Show!!</h1>
                     <img className="mx-auto" src={cards} alt="logo" />
-                    <Link to={'/'} className=' w-40  mx-auto px-4 block py-2 text-sm font-medium text-center text-red-500 bg-grey-100 rounded-lg hover:bg-red-500 hover:text-white border-red-500 border-2 focus:ring-4 focus:outline-none focus:ring-red-300 hover:-translate-y-1 shadow-lg transition-all ease-in-out duration-150'>Creat Cards</Link>
+                    <Link to={'/'} className=' w-40  mx-auto px-4 block py-2 text-sm font-medium text-center text-red-500 bg-grey-100 rounded-lg hover:bg-red-500 hover:text-white border-red-500 border-2 focus:ring-4 focus:outline-none focus:ring-red-300 hover:-translate-y-1 shadow-lg transition-all ease-in-out duration-150'>Create Cards</Link>
                 </div>}
         </div>
     )

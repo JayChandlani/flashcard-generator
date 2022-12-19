@@ -49,7 +49,7 @@ const CreateFlashCard = () => {
 
     return (
         <div className='md:mt-10 px-5 2xl:px-44 xl:px-20 my-5'>
-            {/* using formic component for form submitting an validation  */}
+  {/*============ section 1 getting group details using formic component for form submitting and validation =========== */}
             <Formik
                 initialValues={{
                     group: "",
@@ -62,7 +62,7 @@ const CreateFlashCard = () => {
                         image: ''
                     }]
                 }}
-                // using yup for validation 
+          // -------------using yup for validation ---------
                 validationSchema={
                     object({
                         group: string()
@@ -168,7 +168,7 @@ const CreateFlashCard = () => {
                                 </div>
                             </div>
                         </div>
-                        {/* using fieldarray formic component for adding more fields  */}
+       {/*=================== section 2 getting card details using fieldarray formic component for adding more fields=================  */}
                         <FieldArray
 
                             name="card"
@@ -181,7 +181,7 @@ const CreateFlashCard = () => {
                                             <span name={`card.${index}.id`} className='bg-red-500 px-2 rounded-full text-white'>{index + 1}</span>
 
                                             <div className='flex flex-col'>
-                                                <label htmlFor="term" >Enter Term*</label>
+                                                <label htmlFor={`card.${index}.term`} >Enter Term*</label>
                                                 <input ref={addRefs} className='border-slate-200 rounded-md p-2 lg:w-96 md:w-72 bg-gray-50 border  text-gray-900 text-sm' placeholder='term' type="text"
                                                     name={`card.${index}.term`}
                                                     onChange={(e) => setFieldValue(`card.${index}.term`, e.target.value)}
