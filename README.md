@@ -7,7 +7,7 @@ The user interface of this app is completely responsive.
 ## `Description`
 
 This project was created individually by me, it was build using different frontend technologies namely `React` javascript library,`Tailwind CSS `
-for designing the responsive UI, `Redux` for state management, `React-icons`, `Formik`, `React-Router-Dom`, `react-testing-library` for testing and  `verecel` for 
+for designing the responsive UI, `Redux` for state management, `React-icons`, `Formik`, `React-Router-Dom`, `react-testing-library` for testing and  `vercel` for 
 deploying. 
 Languages used in this project are `HTML`, `CSS`, `JavaScript`. 
 
@@ -26,7 +26,7 @@ This Project Consists of  3 Main Pages.
  here we can see the created cards, we can navigate to different flashcards by clicking on sidebar terms 
  given to the card while creating group, we can also share, print and download the flashcard.
 
-Deploy Link : [Flashcard-Generator](http://flashcard-generator-jaychandlani.verecel.app)
+Deploy Link : [Flashcard-Generator](http://flashcard-generator-jaychandlani.vercel.app)
 
 
 ### `npm start`
