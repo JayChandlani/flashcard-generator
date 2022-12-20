@@ -43,14 +43,25 @@ describe(FlashCardDetails, () => {
         expect(screen.getByText(/description/i)).toBeInTheDocument()
         expect(screen.getByRole("heading", { name: /groupname/i })).toBeInTheDocument()
     })
-    // it('should contain card term,image and defination',async () => {
 
-    //     await waitFor(()=>{
+    it('should contain side bar with  card heading and card term link',async () => {
 
-    //         expect(screen.getByRole("heading", { name: /defination1/i})).toBeInTheDocument()
-    //     })
+        await waitFor(()=>{
 
-    //     // expect(screen.getByRole("img", { name: /flashcard\-img/i })).toBeInTheDocument()
-    // })
+            expect(screen.getByRole("heading", { name: /flashcards/i })).toBeInTheDocument()
+            expect(screen.getByRole("link", { name: /term1/i })).toBeInTheDocument()
+        })
+        
+    })
+    it('should contain buttons for share,download and print',async () => {
+
+        await waitFor(()=>{
+
+            expect(screen.getByRole("button", { name: /share/i })).toBeInTheDocument()
+            expect(screen.getByRole("button", { name: /download/i })).toBeInTheDocument()
+            expect(screen.getByRole("button", { name: /print/i })).toBeInTheDocument()
+        })
+
+    })
 
 })
