@@ -1,25 +1,12 @@
 import MyFlashCard from "../MyFlashCard/MyFlashCard";
 import { cleanup, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { combineReducers, createStore } from "redux";
+import {  createStore } from "redux";
 import { BrowserRouter } from "react-router-dom";
+import rootReducers from "../redux/reducers";
 
 
-const mockReducer = (state = [], action) => {
-    if (action.type === 'add') {
-        return [...state, action.payload]
-
-    } else if (action.type === 'remove') {
-        let cardData = state.filter(obj => state.indexOf(obj) !== state.indexOf(action.payload));
-        return cardData
-    } else {
-        return state
-    }
-}
-const rootReducers = combineReducers({
-    card: mockReducer,
-})
-
+afterEach(cleanup)
 
 const renderWithRedux = (
     component,
@@ -33,7 +20,6 @@ const renderWithRedux = (
         store,
     };
 };
-afterEach(cleanup)
 describe(MyFlashCard, () => {
 
 

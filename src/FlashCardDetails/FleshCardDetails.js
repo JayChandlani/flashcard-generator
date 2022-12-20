@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { addGroupId } from '../redux/actions'
 import Button from '../components/Button';
-const FlashCardDetail = () => {
+const FlashCardDetails = () => {
 
     const navigation = useNavigate()
     const dispatch = useDispatch()
@@ -14,7 +14,9 @@ const FlashCardDetail = () => {
 
     let index = useParams().id
     useEffect(() => {
-        dispatch(addGroupId(parseInt(index))) // dispatching card link id 
+        if (index) {
+            dispatch(addGroupId(parseInt(index))) // dispatching card link id 
+        }
         // eslint-disable-next-line
     }, [index])
 
@@ -77,7 +79,7 @@ const FlashCardDetail = () => {
                                 <FaChevronRight size={'1.5rem'} onClick={() => handleCorousel('inc')} />
                             </div>
                         </div>
-                        <Button groupId={groupId} cardData={cardData}  cardId={cardId}  />
+                        <Button groupId={groupId} cardData={cardData} cardId={cardId} />
                     </div>
                 </div> : ""}
         </>
@@ -85,4 +87,4 @@ const FlashCardDetail = () => {
     )
 }
 
-export default FlashCardDetail
+export default FlashCardDetails

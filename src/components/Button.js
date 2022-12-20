@@ -10,9 +10,9 @@ const Button = ({ groupId, cardId, cardData }) => {
 
     const [showModal, setShowModal] = useState(false);
     const cardRef = useSelector(state => state.cardRef) // getting refernce of the card to print
-    const cardDoc = new jsPDF('landscape', 'px', 'a4', 'false');
     // function for converting card into pdf to download 
-    const pdfGenerate =  () => {
+    const pdfGenerate = () => {
+        const cardDoc = new jsPDF('landscape', 'px', 'a4', 'false');
         cardData[groupId].card[cardId].image
             ? cardDoc.addImage(cardData[groupId].card[cardId].image, 'PNG', 20, 90, 300, 250)
             : cardDoc.addImage(defaultImage, 'PNG', 20, 90, 300, 250)

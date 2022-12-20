@@ -17,9 +17,9 @@ describe(FlashCardGroup, () => {
     render(<FlashCardGroup items={{ group: "groupname", groupicon: "", description: "description", card: [], }} index={0} />)
 
     it('should contain the elements', () => {
-        expect(screen.getByRole('link', { name: /view cards/i })).toBeInTheDocument()
-        expect(screen.getByRole('heading', { name: /groupname/i })).toBeInTheDocument()
-        expect(screen.getByRole('heading', { name: /description/i })).toBeInTheDocument()
+        expect(screen.getByRole('link', { name: /view cards/i })).toBeInTheDocument();
+        expect(screen.getByRole('heading', { name: /groupname/i })).toBeInTheDocument();
+        expect(screen.getByRole('heading', { name: /description/i })).toBeInTheDocument();
     })
 
 })

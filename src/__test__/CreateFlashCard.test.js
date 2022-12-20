@@ -1,4 +1,4 @@
-import { screen, render as rtlRender, waitFor } from "@testing-library/react"
+import { screen, render as rtlRender, waitFor, act } from "@testing-library/react"
 import { Provider } from "react-redux"
 import CreateFlashCard from "../CreateFlashCard/CreateFlashCard"
 import store from '../store/store'
@@ -14,7 +14,6 @@ describe(CreateFlashCard, () => {
         render(<CreateFlashCard />)
     })
 
-    
     it('should show required on fields if any field is left blank', async () => {
 
         const groupName = screen.getByPlaceholderText(/group name/i)
@@ -25,9 +24,9 @@ describe(CreateFlashCard, () => {
 
         const term = screen.getByPlaceholderText(/term/i)
         user.type(term, 'term1')
-
-        const defination = screen.getByPlaceholderText(/defination/i)
-        user.type(defination, '')
+        //--------------------------- we are leaving one field blank for testing --------------------------------
+        // const defination = screen.getByPlaceholderText(/defination/i)
+        // user.type(defination, '')
 
         user.click(screen.getByRole('button', { name: /create/i }));
 
@@ -36,14 +35,20 @@ describe(CreateFlashCard, () => {
         })
 
     })
+
+
     it('should create input field on click add more button ', async () => {
 
 
-        user.click(screen.getByRole('button', { name: /\+ add more/i }));
+
+        await act(() => {
+            user.click(screen.getByRole('button', { name: /\+ add more/i }))
+        });
 
         await waitFor(() => {
             expect(screen.getAllByPlaceholderText(/term/i)).toHaveLength(2)
         })
+
 
     })
 
@@ -60,13 +65,19 @@ describe(CreateFlashCard, () => {
 
         const defination = screen.getByPlaceholderText(/defination/i)
         user.type(defination, 'Lo. Soluta doloremque quasi voluptate repellat velit hic magnam')
-        user.click(screen.getByRole('button', { name: /create/i }));
 
-        await waitFor(() => {
-            expect(groupName).toHaveTextContent("")
-            expect(discription).toHaveTextContent("")
-            expect(term).toHaveTextContent("")
-            expect(defination).toHaveTextContent("")
+
+        await act(() => {
+            user.click(screen.getByRole('button', { name: /create/i }))
+        })
+        
+        await act(() => {
+            waitFor(() => {
+                expect(groupName).toHaveTextContent("")
+                expect(discription).toHaveTextContent("")
+                expect(term).toHaveTextContent("")
+                expect(defination).toHaveTextContent("")
+            })
         })
 
     })

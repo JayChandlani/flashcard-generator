@@ -5,7 +5,7 @@ import { localCard } from '../redux/actions/setCard'
 import FlashCardCorousel from '../components/FlashCardCorousel'
 import CreateFlashCard from '../CreateFlashCard/CreateFlashCard'
 import MyFlashCard from '../MyFlashCard/MyFlashCard'
-import FlashCardDetail from '../FlashCardDetails/FleshCardDetails'
+import FlashCardDetails from '../FlashCardDetails/FleshCardDetails'
 
 
 const Main = () => {
@@ -23,7 +23,7 @@ const Main = () => {
         <Routes>
             <Route path={'/'} element={< CreateFlashCard/>} />
             <Route path={'/card'} element={<MyFlashCard />} />
-            <Route path='/card/:id' element={<FlashCardDetail />}>
+            <Route path='/card/:id' element={<FlashCardDetails />}>
                 <Route path={':index'} element={<FlashCardCorousel />}></Route>
             </Route>
         </Routes>
