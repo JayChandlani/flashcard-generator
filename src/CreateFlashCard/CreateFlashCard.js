@@ -173,7 +173,7 @@ const CreateFlashCard = () => {
 
                             name="card"
                             render={arrayHelpers => (
-                                <div className='bg-white p-5 rounded-md mt-4 overflow-hidden'>
+                                <div className='bg-white p-5 rounded-md mt-4  overflow-hidden'>
                                     {values.card && values.card.length > 0
                                         ? (values.card.map((cardItem, index) =>
 
@@ -194,7 +194,7 @@ const CreateFlashCard = () => {
 
                                             <div className='flex flex-col '>
                                                 <label htmlFor="defination">Enter Defination*</label>
-                                                <Field as="textarea" className='border-slate-200 h-11 rounded-md focus:h-24 p-2 lg:w-96 md:w-72 resize-none bg-gray-50 border  text-gray-900 text-sm' placeholder='defination' type="text"
+                                                <Field as="textarea" className='border-slate-200 h-11 rounded-md focus:h-24 p-2 lg:w-96 md:w-72 resize-none transition-all ease-in-out bg-gray-50 border duration-500  text-gray-900 text-sm' placeholder='defination' type="text"
                                                     name={`card.${index}.defination`}
                                                 />
                                                 <div className='text-red-500'>
