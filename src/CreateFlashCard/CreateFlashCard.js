@@ -49,7 +49,7 @@ const CreateFlashCard = () => {
 
     return (
         <div className='md:mt-10 px-5 2xl:px-44 xl:px-20 my-5'>
-  {/*============ section 1 getting group details using formic component for form submitting and validation =========== */}
+            {/*============ section 1 getting group details using formic component for form submitting and validation =========== */}
             <Formik
                 initialValues={{
                     group: "",
@@ -62,7 +62,7 @@ const CreateFlashCard = () => {
                         image: ''
                     }]
                 }}
-          // -------------using yup for validation ---------
+                // -------------using yup for validation ---------
                 validationSchema={
                     object({
                         group: string()
@@ -70,7 +70,7 @@ const CreateFlashCard = () => {
                             .required('Required'),
 
                         description: string()
-                            .max(150, 'Must be 100 characters or less')
+                            .max(250, 'Must be 250 characters or less')
                             .required('Required'),
 
                         card: array(object({
@@ -78,7 +78,7 @@ const CreateFlashCard = () => {
                                 .max(15, 'Must be 15 character or less')
                                 .required('Required'),
                             defination: string()
-                                .max(150, 'Must be 100 characters or less')
+                                .max(250, 'Must be 250 characters or less')
                                 .required('Required'),
                         }))
                     })
@@ -168,7 +168,7 @@ const CreateFlashCard = () => {
                                 </div>
                             </div>
                         </div>
-       {/*=================== section 2 getting card details using fieldarray formic component for adding more fields=================  */}
+                        {/*=================== section 2 getting card details using fieldarray formic component for adding more fields=================  */}
                         <FieldArray
 
                             name="card"
@@ -194,7 +194,7 @@ const CreateFlashCard = () => {
 
                                             <div className='flex flex-col '>
                                                 <label htmlFor="defination">Enter Defination*</label>
-                                                <Field as="textarea" className='border-slate-200 h-11 rounded-md p-2 lg:w-96 md:w-72 resize-none bg-gray-50 border  text-gray-900 text-sm' placeholder='defination' type="text"
+                                                <Field as="textarea" className='border-slate-200 h-11 rounded-md focus:h-24 p-2 lg:w-96 md:w-72 resize-none bg-gray-50 border  text-gray-900 text-sm' placeholder='defination' type="text"
                                                     name={`card.${index}.defination`}
                                                 />
                                                 <div className='text-red-500'>

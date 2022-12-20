@@ -22,7 +22,7 @@ const FlashCardCorousel = () => {
         , [id])
 
     return (
-        <div ref={cardRef} className='rounded-md w-80 md:min-w-[500px] lg:min-w-[600px]  2xl:min-w-[700px] h-96   overflow-hidden bg-white grid grid-cols-1 lg:grid-cols-2 p-5 space-x-4 items-center shadow-sm'>
+        <div ref={cardRef} className='rounded-md w-80 md:min-w-[500px] lg:min-w-[600px]  2xl:min-w-[700px] h-[450px] lg:space-y-0   overflow-hidden bg-white grid grid-cols-1 lg:grid-cols-2 p-5 space-x-4 space-y-8 items-center shadow-sm'>
             <div className=' bg-gray-100 overflow-hidden'>
                 <img className=' object-cover w-60 h-40 mx-auto' alt='flashcard-img'
                     src={cardData[groupId].card[cardId].image
