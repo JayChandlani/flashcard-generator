@@ -32,7 +32,7 @@ const FlashCardDetails = () => {
     }
     return (
         <>
-            {cardData.length ?
+            {cardData[groupId] ?
                 <div className='md:mt-10  px-5  xl:px-44  my-5'>
                     <div className='flex space-x-5'>
                         <div>
