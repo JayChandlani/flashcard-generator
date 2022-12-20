@@ -26,7 +26,7 @@ This Project Consists of  3 Main Pages.
  here we can see the created cards, we can navigate to different flashcards by clicking on sidebar terms 
  given to the card while creating group, we can also share, print and download the flashcard.
 
-Deploy Link : [Flashcard-Generator](flashcard-generator-jaychandlani.verecel.app)
+Deploy Link : [Flashcard-Generator](http://flashcard-generator-jaychandlani.verecel.app)
 
 
 ### `npm start`
