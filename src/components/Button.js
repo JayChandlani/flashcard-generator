@@ -16,7 +16,8 @@ const Button = ({ groupId, cardId, cardData }) => {
         cardData[groupId].card[cardId].image
             ? cardDoc.addImage(cardData[groupId].card[cardId].image, 'PNG', 20, 90, 300, 250)
             : cardDoc.addImage(defaultImage, 'PNG', 20, 90, 300, 250)
-        cardDoc.text(350, 110, cardData[groupId].card[cardId].defination)
+        let textlines = cardDoc.splitTextToSize(cardData[groupId].card[cardId].defination, 250);
+        cardDoc.text(350, 110, textlines)
         cardDoc.text(300, 40, cardData[groupId].card[cardId].term)
         cardDoc.text(500, 430, 'Made by Jay Chandlani')
         cardDoc.save(`${cardData[groupId].card[cardId].term}.pdf`)
